@@ -1,4 +1,5 @@
 class Pizza {
+
   final String sauce;
   final List<String> toppings;
   final int diameter;
@@ -39,6 +40,6 @@ void main() {
   pizzaBuilder.diameter = 100;
   pizzaBuilder.toppings = ['cheese', 'tomato', 'chicken'];
 
-  Pizza plainPizza = Pizza._builder(pizzaBuilder);
+  Pizza plainPizza = pizzaBuilder.build();
   print('Woohoo!$plainPizza');
 }

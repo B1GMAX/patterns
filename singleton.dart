@@ -2,9 +2,9 @@ void main() {
   final s1 = Singleton();
   final s2 = Singleton();
 
-  print('s1 = ${s1}');
+  print('s1 = ${s1.hashCode}');
 
-  print('s1 = ${s2}');
+  print('s2 = ${s2.hashCode}');
 }
 
 class Singleton {

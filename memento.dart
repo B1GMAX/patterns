@@ -14,8 +14,6 @@ class Memento {
 
 class Originator {
   String _state;
-
-  // NOTE: This uses the state setter on init to get a handy print
   Originator(String s) {
     state = s;
   }
