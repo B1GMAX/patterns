@@ -21,7 +21,7 @@ class CoffeeRoaster extends Factory {
 
   bool get isTooHot => _temp >= 225;
 
-  void turnGasValve() {
+  void turnValve() {
     loudspeaker.announce("Increasing gas!");
     _temp += 25;
     loudspeaker.announce("Temperature is now at $_temp");
@@ -31,7 +31,7 @@ class CoffeeRoaster extends Factory {
 void main() {
   var roaster = CoffeeRoaster();
   for (var i = 0; i < 3; i++) {
-    roaster.turnGasValve();
+    roaster.turnValve();
     if (roaster.isTooHot) {
       roaster.loudspeaker = LoudspeakerWithAlarm();
     }

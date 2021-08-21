@@ -36,10 +36,16 @@ class PizzaBuilder {
 void main() {
   print('PIZZA BBQ');
 
-  PizzaBuilder pizzaBuilder = PizzaBuilder('bbq');
-  pizzaBuilder.diameter = 100;
-  pizzaBuilder.toppings = ['cheese', 'tomato', 'chicken'];
+  PizzaBuilder builder = PizzaBuilder('bbq')..setToppings(['cheese', 'tomato', 'chicken']);
+  builder.diameter=100;
+  Pizza pizza=builder.build();
+  builder.diameter=200;
+  builder.toppings=['sausage', 'tomato', 'mushrooms'];
+  Pizza pizza2=builder.build();
 
-  Pizza plainPizza = pizzaBuilder.build();
-  print('Woohoo!$plainPizza');
+
+
+  print('Woohoo!$pizza');
+  print('Woohoo!$pizza2');
+
 }

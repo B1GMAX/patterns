@@ -3,6 +3,8 @@ void main() {
   Honda cloneHonda = honda.clone();
 
   print('hond ${honda.cloneStatus}');
+  print('cloneHonda ${cloneHonda.width}');
+
   String cloneIsClone =
       honda == cloneHonda ? "is a clone of" : "is not a clone of";
   print("сloneHonda $cloneIsClone Honda.");
@@ -26,7 +28,7 @@ class Honda extends Cars {
   int _hashCode;
   bool isClone = false;
 
-  String get cloneStatus => isClone ? "is a clone" : "is an real ";
+  String get cloneStatus => isClone ? "is a clone" : "is a real ";
 
   Honda(this.height, this.width) : super('');
 
