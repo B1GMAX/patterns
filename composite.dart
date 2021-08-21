@@ -31,14 +31,14 @@ class LeafThing implements Thing {
 }
 
 void main() {
-  var compositeParent = CompositeThing("Cat in the Hat");
-  var compositeChild1 = CompositeThing("Thing 1");
-  var compositeChild2 = CompositeThing("Thing 2");
+  CompositeThing compositeParent = CompositeThing("Cat in the Hat");
+  CompositeThing compositeChild1 = CompositeThing("Thing 1");
+  CompositeThing compositeChild2 = CompositeThing("Thing 2");
 
-  var leaf1_1 = LeafThing("Frustrate fish");
-  var leaf1_2 = LeafThing("Knock down vases");
-  var leaf2_1 = LeafThing("Ruin mom's dress");
-  var leaf2_2 = LeafThing("Clean up");
+  LeafThing leaf1_1 = LeafThing("Frustrate fish");
+  LeafThing leaf1_2 = LeafThing("Knock down vases");
+  LeafThing leaf2_1 = LeafThing("Ruin mom's dress");
+  LeafThing leaf2_2 = LeafThing("Clean up");
 
   compositeChild1.addChild(leaf1_1);
   compositeChild1.addChild(leaf1_2);

@@ -1,32 +1,43 @@
-abstract class Beverage {
-  double cost;
-  List<String> ingredients;
+abstract class INotifier{
+  void Send();
 }
 
-class Ingredient {
-  double cost;
-  String name;
-
-  Ingredient(this.name, this.cost);
-
+class UserNotifier extends INotifier{
+  void Send() {
+    print('Notify user regularly');
+  }
 }
-
-class Coffee implements Beverage {
-  double cost = 5;
-  List<String> ingredients = List.from(["coffee", "milk", "sugar"]);
+abstract class NotifierDecoratorBase extends INotifier{
+  INotifier notifier;
+  NotifierDecoratorBase(INotifier notifier){
+    this.notifier=notifier;
+  }
+  void Send(){
+    notifier.Send();
+  }
 }
-
-class StarbucksCoffeeDecorator implements Beverage {
-  Beverage coffee = Coffee();
-  double cost=8;
-  List<String> ingredients = Coffee().ingredients;
+class SmsNotifier extends NotifierDecoratorBase{
+  SmsNotifier(INotifier notifier) : super(notifier);
+  void Send(){
+    super.Send();
+    print('Notify user with sms');
+  }
 }
+class EmailNotifier  extends NotifierDecoratorBase{
+  EmailNotifier(INotifier notifier) : super(notifier);
+  void Send(){
+    super.Send();
+    print('Notify user with email');
+  }
+}
+void main(){
+  bool isSmsNotificationEnabled    = true;
+  bool isEmailNotificationEnabled  = false;
+  INotifier notifier =  UserNotifier();
 
-void main() {
-  Coffee coffee = Coffee();
-  StarbucksCoffeeDecorator starbucksCoffee = StarbucksCoffeeDecorator();
 
-  print("Coffee contains ${coffee.ingredients.join(",")}. It costs \$${coffee.cost}");
-  print(
-      "Starbucks coffee contains ${starbucksCoffee.ingredients.join(",")}. It costs \$${starbucksCoffee.cost}");
+  if (isSmsNotificationEnabled)   notifier = SmsNotifier(notifier);
+  if (isEmailNotificationEnabled) notifier =  EmailNotifier(notifier);
+
+  notifier.Send();
 }
