@@ -4,7 +4,7 @@ abstract class INotifier{
 
 class UserNotifier extends INotifier{
   void Send() {
-    print('Notify user regularly');
+    print('Notify user regularlyyy');
   }
 }
 abstract class NotifierDecoratorBase extends INotifier{
