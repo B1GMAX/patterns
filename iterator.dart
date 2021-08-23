@@ -1,13 +1,51 @@
-class RainbowIterator implements Iterator {
-  List<String>_colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"];
-  int _index = 0;
-  String get current => _colors[_index++];
-  bool moveNext() => _index < _colors.length;
+class Fruit {
+  final String name;
+  final String color;
+
+  Fruit( this.name, this.color );
+}
+
+class Fruits {
+  List<Fruit> fruits = [];
+
+  Fruits( this.fruits );
+
+  FruitsIterator get iterator {
+    return FruitsIterator( this.fruits );
+  }
+}
+
+class FruitsIterator extends Iterator<String> {
+  List<Fruit> fruits = [];
+  String _current;
+  int index = 0;
+
+  FruitsIterator( this.fruits );
+
+  bool moveNext() {
+    if( index == fruits.length ) {
+      _current = null;
+      return false;
+    } else {
+      _current = fruits[ index++ ].name;
+      return true;
+    }
+  }
+
+  String get current => _current;
 }
 
 void main() {
-  RainbowIterator rainbowColors = RainbowIterator();
-  while(rainbowColors.moveNext()) {
-    print(rainbowColors.current);
+  Fruits fruits = Fruits([
+    Fruit('Banana', 'Green'),
+    Fruit('Mango', 'Yellow'),
+    Fruit('Apple', 'Red')
+  ]);
+
+
+  FruitsIterator iterator = fruits.iterator;
+
+  while (iterator.moveNext()) {
+    print('Fruit name: ${ iterator.current }');
   }
 }
