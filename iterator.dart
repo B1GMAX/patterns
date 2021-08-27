@@ -37,8 +37,8 @@ class FruitsIterator extends Iterator<String> {
 
 void main() {
   Fruits fruits = Fruits([
-    Fruit('Banana', 'Green'),
-    Fruit('Mango', 'Yellow'),
+    Fruit('Banana', 'Yellow'),
+    Fruit('Mango', 'Orange'),
     Fruit('Apple', 'Red')
   ]);
 
