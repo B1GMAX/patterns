@@ -36,23 +36,18 @@ class Originator {
   }
 }
 
-class CareTaker {
-  Memento memento;
-}
 
 void main() {
   Originator me = Originator("Returned from store");
   me.state = "Placing car keys down";
 
-  Memento locationOfKeys = me.saveToMemento();
-  CareTaker memory = CareTaker();
-  memory.memento = locationOfKeys;
+  Memento memento = me.saveToMemento();
 
   me.state = "Putting away groceries";
   me.state = "Noticed missing pickles";
   me.state = "Looking for car keys...";
 
-  me.restoreFromMemento(memory.memento);
+  me.restoreFromMemento(memento);
   me.state = "Going back to store for pickles";
 
 }

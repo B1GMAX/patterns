@@ -40,7 +40,7 @@ class Stateful {
 }
 
 void main() {
-  var lightSwitch = Stateful(StatusOff());
+  Stateful lightSwitch = Stateful(StatusOff());
   print("The light switch is ${lightSwitch.state}.");
   print("Toggling the light switch...");
   lightSwitch.touch();
