@@ -59,7 +59,7 @@ class MorningFacade {
 }
 
 void main() {
-  var typicalMorning = MorningFacade();
+  MorningFacade typicalMorning = MorningFacade();
 
   print("Wake up! Grab a brush and put on a little makeup...");
   print("\r\nStumble to the kitchen...");

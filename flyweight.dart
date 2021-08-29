@@ -1,72 +1,109 @@
-import "dart:collection";
+import 'dart:collection';
 
-class Letter {
-  String letter;
-  Letter(String l) {
-    if (l.length != 1) { throw  Exception("Can only be a single letter"); }
-    letter = l;
+abstract class EnglishCharacter {
+  String symbol;
+
+  int width;
+
+  int height;
+
+  void printCharacter();
+}
+
+class CharacterA extends EnglishCharacter {
+  CharacterA() {
+    symbol = 'A';
+    width = 10;
+    height = 20;
   }
 
   @override
-  String toString() => letter;
+  void printCharacter() {
+    print("Symbol = " +
+        '$symbol' +
+        " Width = " +
+        '$width' +
+        " Height = " +
+        '$height');
+  }
 }
 
-class Sentence {
-  List<Letter> letters = [];
-  void addLetter(Letter letter) => letters.add(letter);
+class CharacterB extends EnglishCharacter {
+  CharacterB() {
+    symbol = 'B';
+    width = 20;
+    height = 30;
+  }
 
   @override
-  String toString() => letters.join("");
+  void printCharacter() {
+    print("Symbol = " +
+        '$symbol' +
+        " Width = " +
+        '$width' +
+        " Height = " +
+        '$height');
+  }
 }
 
-class LetterFactory {
-  Map<String, Letter> letters = {};
-
-  Letter fetchLetter(String l) {
-    if (letters.containsKey(l)) { return letters[l]; }
-    Letter letter = Letter(l);
-    letters[l] = letter;
-    return letter;
+class CharacterC extends EnglishCharacter {
+  CharacterC() {
+    symbol = 'C';
+    width = 40;
+    height = 50;
   }
 
-  int get lettersCreated => letters.length;
+  @override
+  void printCharacter() {
+    print("Symbol = " +
+        '$symbol' +
+        " Width = " +
+        '$width' +
+        " Height = " +
+        '$height');
+  }
 }
 
-class Document {
-  LetterFactory letterFactory = LetterFactory();
-  int lettersWritten = 0;
-  SplayTreeMap<int, Sentence> sentences;
+class FlyweightFactory {
+  HashMap<int, EnglishCharacter> characters = HashMap();
 
-  Document() {
-    sentences =  SplayTreeMap<int, Sentence>();
-  }
-
-
-
-  void write(int sentenceKey, String letterString) {
-    if (!sentences.containsKey(sentenceKey)) {
-      sentences[sentenceKey] = Sentence();
+  EnglishCharacter getCharacter(int characterCode) {
+    EnglishCharacter character = characters[characterCode];
+    if (character == null) {
+      switch (characterCode) {
+        case 1:
+          {
+            character = CharacterA();
+            break;
+          }
+        case 2:
+          {
+            character = CharacterB();
+            break;
+          }
+        case 3:
+          {
+            character = CharacterC();
+            break;
+          }
+      }
+      characters[characterCode] = character;
     }
-
-    Letter l = letterFactory.fetchLetter(letterString);
-    sentences[sentenceKey].addLetter(l);
-    lettersWritten++;
+    return character;
   }
-
-  int get lettersCreated => letterFactory.lettersCreated;
 }
 
 void main() {
-  Document doc = Document();
+  FlyweightFactory factory = FlyweightFactory();
 
-  doc.write(6, "t");
-  doc.write(7, "u");
-  doc.write(1, "A");
-  doc.write(2, "y");
-  doc.write(7, "s");
-
-
-
-  print("\r\nDocument wrote: ${doc.lettersWritten}.");
-  print("Letters created: ${doc.lettersCreated}.");
+  List<int> characterCodes = [1, 2, 3];
+  for (int nextCode in characterCodes) {
+    EnglishCharacter character = factory.getCharacter(nextCode);
+    character.printCharacter();
+  }
+  List<int> characterCodes2 = [2, 1, 3];
+  for (int nextCode in characterCodes2) {
+    EnglishCharacter character = factory.getCharacter(nextCode);
+    character.printCharacter();
+  }
 }
