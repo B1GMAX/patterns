@@ -1,7 +1,7 @@
 class Car {
   String method() {
     print('The/method car is started');
-   return 'The best car';
+    return 'The best car';
   }
 }
 
@@ -13,7 +13,6 @@ class RailAdapter extends Target {
   String call() {
     Car car = Car();
     print('RailAdapter/call is started');
-
     return car.method();
   }
 }
