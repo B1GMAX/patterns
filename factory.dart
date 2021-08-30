@@ -1,25 +1,41 @@
-void main() {
-  Application myApp1 = Application("Internet Browser");
-  Application myApp2 = Application("Internet Browser 2");
-myApp1.about();
+ abstract class Room {
+   void connect(Room room);
 }
 
-class Application {
-  String name;
-  static Application app = Application.name("");
+ class MagicRoom extends Room {
+   void connect(Room room) {}
+}
 
-  Application.name(this.name);
+ class OrdinaryRoom extends Room {
+   void connect(Room room) {}
+}
 
-  factory Application(String name) {
-    if (app.name == "") {
-      app = Application.name(name);
-      print("Приложение $name запущено");
-    } else {
-      print("В приложении ${app.name} открыта новая вкладка");
-    }
-    return app;
+ abstract class MazeGame {
+   final List<Room> rooms =  List<Room>();
+
+   MazeGame() {
+    Room room1 = makeRoom();
+    Room room2 = makeRoom();
+    room1.connect(room2);
+    rooms.add(room1);
+    rooms.add(room2);
   }
-  void about(){
-    print("Приложение $name");
+
+  makeRoom();
+}
+ class MagicMazeGame extends MazeGame {
+  @override
+   Room makeRoom() {
+    return  MagicRoom();
   }
 }
+
+ class OrdinaryMazeGame extends MazeGame {
+  @override
+   Room makeRoom() {
+    return new OrdinaryRoom();
+  }
+}
+
+MazeGame ordinaryGame =  OrdinaryMazeGame();
+MazeGame magicGame =  MagicMazeGame();

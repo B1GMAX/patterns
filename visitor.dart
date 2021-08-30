@@ -60,7 +60,7 @@ class BodyPartProdVisitor implements BodyPartVisitor {
 }
 
 void main() {
-  var body = Body();
+  Body body = Body();
   body.accept(BodyPartStitchVisitor());
   body.accept(BodyPartProdVisitor());
 
