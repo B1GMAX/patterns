@@ -34,7 +34,7 @@ class Body implements BodyPart {
 
   @override
   void accept(BodyPartVisitor visitor) {
-    for (var bodyPart in bodyParts) {
+    for (BodyPart bodyPart in bodyParts) {
       bodyPart.accept(visitor);
     }
     visitor.visit(this);
