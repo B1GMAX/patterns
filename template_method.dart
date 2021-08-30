@@ -14,7 +14,7 @@ class Concrete extends Abstract {
 class ConcreteOverridingHook extends Abstract {
   String abstractMethod() => "So, so boring...";
   @override
-  String hookMethod() => "I'm an overriden hook method!";
+  String hookMethod() => "I'm an override hook method!";
 }
 
 void main() {
@@ -22,6 +22,4 @@ void main() {
   var con2 = ConcreteOverridingHook();
   con1.templateMethod();
   con2.templateMethod();
-
-
 }
