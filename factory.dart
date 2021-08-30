@@ -1,19 +1,19 @@
- abstract class Room {
-   void connect(Room room);
+abstract class Room {
+  void connect(Room room);
 }
 
- class MagicRoom extends Room {
-   void connect(Room room) {}
+class MagicRoom extends Room {
+  void connect(Room room) {}
 }
 
- class OrdinaryRoom extends Room {
-   void connect(Room room) {}
+class OrdinaryRoom extends Room {
+  void connect(Room room) {}
 }
 
- abstract class MazeGame {
-   final List<Room> rooms =  List<Room>();
+abstract class MazeGame {
+  final List<Room> rooms = List<Room>();
 
-   MazeGame() {
+  MazeGame() {
     Room room1 = makeRoom();
     Room room2 = makeRoom();
     room1.connect(room2);
@@ -23,19 +23,17 @@
 
   makeRoom();
 }
- class MagicMazeGame extends MazeGame {
+
+class MagicMazeGame extends MazeGame {
   @override
-   Room makeRoom() {
-    return  MagicRoom();
+  Room makeRoom() {
+    return MagicRoom();
   }
 }
 
- class OrdinaryMazeGame extends MazeGame {
+class OrdinaryMazeGame extends MazeGame {
   @override
-   Room makeRoom() {
-    return new OrdinaryRoom();
+  Room makeRoom() {
+    return OrdinaryRoom();
   }
 }
-
-MazeGame ordinaryGame =  OrdinaryMazeGame();
-MazeGame magicGame =  MagicMazeGame();

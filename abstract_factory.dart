@@ -31,7 +31,7 @@ class CoffeeShop implements DrinkFactory {
 }
 
 void main() {
-  var mood = "done";
+  String mood = "done";
   DrinkFactory destination;
 
   switch(mood) {
