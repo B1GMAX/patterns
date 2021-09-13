@@ -1,7 +1,7 @@
 abstract class Iterator {
   bool hasNext();
-  Object next();
 
+  Object next();
 }
 
 abstract class Container {
@@ -13,11 +13,12 @@ class NameRepository implements Container {
   Iterator getIterator() {
     return NameIterator(names);
   }
+
   List<String> names = ["Robert", "John", "Julie", "Lora"];
 }
 
 class NameIterator implements Iterator {
-  int index=0;
+  int index = 0;
   final List<String> names;
 
   NameIterator(this.names);
@@ -34,18 +35,16 @@ class NameIterator implements Iterator {
   @override
   Object next() {
     if (this.hasNext()) {
-      return  names[index++];
+      return names[index++];
     }
     return null;
   }
 }
 
-
- void main( List<String> args) {
-  NameRepository namesRepository =  NameRepository();
-  for(Iterator iter = namesRepository.getIterator(); iter.hasNext();){
-  String name = iter.next();
- print("Name :$name " );
+void main(List<String> args) {
+  NameRepository namesRepository = NameRepository();
+  for (Iterator iter = namesRepository.getIterator(); iter.hasNext();) {
+    String name = iter.next();
+    print("Name :$name ");
   }
-  }
-
+}

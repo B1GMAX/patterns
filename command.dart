@@ -1,5 +1,5 @@
 abstract class Receiver {
-  Set<String> get actions;
+  List<String> get actions;
 }
 
 abstract class Command {
@@ -39,20 +39,17 @@ class TurnOnCommand extends Command {
 class Light implements Receiver {
   void turnOff() => print("Light off!");
   void turnOn() => print("Light on!");
-  Set<String> get actions => Set.from(["off", "on"]);
+  List<String> get actions => List.from(["off", "on"]);
 }
 
 class LightSwitch {
   Invoker _switch = Invoker();
   Light light;
-
   LightSwitch(this.light);
-
-
 
   void perform(String action) {
     if (!light.actions.contains(action)) {
-      return print("Uh...wait, wut?");
+      return print("Wait, wut?");
     }
     switch(action) {
       case "on": return _switch.execute(TurnOnCommand(light));
