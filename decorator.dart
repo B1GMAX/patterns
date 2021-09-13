@@ -1,9 +1,9 @@
 abstract class INotifier{
-  void Send();
+  void send();
 }
 
 class UserNotifier extends INotifier{
-  void Send() {
+  void send() {
     print('Notify user regularly');
   }
 }
@@ -12,21 +12,21 @@ abstract class NotifierDecoratorBase extends INotifier{
   NotifierDecoratorBase(INotifier notifier){
     this.notifier=notifier;
   }
-  void Send(){
-    notifier.Send();
+  void send(){
+    notifier.send();
   }
 }
 class SmsNotifier extends NotifierDecoratorBase{
   SmsNotifier(INotifier notifier) : super(notifier);
-  void Send(){
-    super.Send();
+  void send(){
+    super.send();
     print('Notify user with sms');
   }
 }
 class EmailNotifier  extends NotifierDecoratorBase{
   EmailNotifier(INotifier notifier) : super(notifier);
-  void Send(){
-    super.Send();
+  void send(){
+    super.send();
     print('Notify user with email');
   }
 }
@@ -39,5 +39,5 @@ void main(){
   if (isSmsNotificationEnabled)   notifier = SmsNotifier(notifier);
   if (isEmailNotificationEnabled) notifier =  EmailNotifier(notifier);
 
-  notifier.Send();
+  notifier.send();
 }

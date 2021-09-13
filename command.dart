@@ -15,14 +15,9 @@ abstract class Command {
 }
 
 class Invoker {
-  List<String> history = [];
   void execute(Command cmd) {
     cmd.execute();
-    history.add("[${DateTime.now()}] Executed $cmd");
   }
-
-  @override
-  String toString() => history.fold("", (events, event) => events + "$event\r\n");
 }
 
 class TurnOffCommand extends Command {
@@ -53,7 +48,7 @@ class LightSwitch {
 
   LightSwitch(this.light);
 
-  String get history => _switch.toString();
+
 
   void perform(String action) {
     if (!light.actions.contains(action)) {
@@ -67,15 +62,15 @@ class LightSwitch {
 }
 
 void main() {
-  var myFavoriteLamp = Light();
-  var iotLightSwitch = LightSwitch(myFavoriteLamp);
+  Light myFavoriteLamp = Light();
+  LightSwitch iotLightSwitch = LightSwitch(myFavoriteLamp);
 
   iotLightSwitch.perform("on");
   iotLightSwitch.perform("off");
   iotLightSwitch.perform("blink");
   iotLightSwitch.perform("on");
 
-  print("\r\n*** Fancy IoT Switch Logs ***\r\n${iotLightSwitch.history}");
+
 
 
 }

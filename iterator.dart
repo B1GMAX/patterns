@@ -1,51 +1,51 @@
-class Fruit {
-  final String name;
-  final String color;
+abstract class Iterator {
+  bool hasNext();
+  Object next();
 
-  Fruit( this.name, this.color );
 }
 
-class Fruits {
-  List<Fruit> fruits = [];
+abstract class Container {
+  Iterator getIterator();
+}
 
-  Fruits( this.fruits );
-
-  FruitsIterator get iterator {
-    return FruitsIterator( this.fruits );
+class NameRepository implements Container {
+  @override
+  Iterator getIterator() {
+    return NameIterator(names);
   }
+  List<String> names = ["Robert", "John", "Julie", "Lora"];
 }
 
-class FruitsIterator extends Iterator<String> {
-  List<Fruit> fruits = [];
-  String _current;
-  int index = 0;
+class NameIterator implements Iterator {
+  int index=0;
+  final List<String> names;
 
-  FruitsIterator( this.fruits );
+  NameIterator(this.names);
 
-  bool moveNext() {
-    if( index == fruits.length ) {
-      _current = null;
-      return false;
-    } else {
-      _current = fruits[ index++ ].name;
+  @override
+  bool hasNext() {
+    if (index < names.length) {
       return true;
     }
+
+    return false;
   }
 
-  String get current => _current;
-}
-
-void main() {
-  Fruits fruits = Fruits([
-    Fruit('Banana', 'Yellow'),
-    Fruit('Mango', 'Orange'),
-    Fruit('Apple', 'Red')
-  ]);
-
-
-  FruitsIterator iterator = fruits.iterator;
-
-  while (iterator.moveNext()) {
-    print('Fruit name: ${ iterator.current }');
+  @override
+  Object next() {
+    if (this.hasNext()) {
+      return  names[index++];
+    }
+    return null;
   }
 }
+
+
+ void main( List<String> args) {
+  NameRepository namesRepository =  NameRepository();
+  for(Iterator iter = namesRepository.getIterator(); iter.hasNext();){
+  String name = iter.next();
+ print("Name :$name " );
+  }
+  }
+
