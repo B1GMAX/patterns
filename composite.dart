@@ -1,5 +1,5 @@
 abstract class Thing {
-  String name;
+  String name='';
   void doSomething();
 }
 

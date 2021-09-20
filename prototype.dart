@@ -11,7 +11,7 @@ void main() {
 }
 
 abstract class Cars {
-  String color;
+  String color='';
 
   Cars(this.color);
 
@@ -25,7 +25,7 @@ abstract class Cars {
 class Honda extends Cars {
   int width = 170;
   int height = 150;
-  int _hashCode;
+  int _hashCode=0;
   bool isClone = false;
 
   String get cloneStatus => isClone ? "is a clone" : "is a real ";
@@ -41,7 +41,7 @@ class Honda extends Cars {
 
   @override
   int get hashCode {
-    if (_hashCode != null) return _hashCode;
+    if (_hashCode != true) return _hashCode;
     _hashCode = DateTime.now().millisecondsSinceEpoch;
     return _hashCode;
   }

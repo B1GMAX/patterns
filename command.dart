@@ -4,7 +4,7 @@ abstract class Receiver {
 
 abstract class Command {
   Receiver receiver;
-  String name;
+  String name='';
 
   Command(this.receiver);
 
@@ -22,7 +22,9 @@ class Invoker {
 
 class TurnOffCommand extends Command {
   String name = "Turn off";
-  TurnOffCommand(Light light): super(light);
+
+  TurnOffCommand(Light light) : super(light);
+
   void execute() {
     (receiver as Light).turnOff();
   }
@@ -30,7 +32,9 @@ class TurnOffCommand extends Command {
 
 class TurnOnCommand extends Command {
   String name = "Turn on";
-  TurnOnCommand(Light light): super(light);
+
+  TurnOnCommand(Light light) : super(light);
+
   void execute() {
     (receiver as Light).turnOn();
   }
@@ -38,22 +42,27 @@ class TurnOnCommand extends Command {
 
 class Light implements Receiver {
   void turnOff() => print("Light off!");
+
   void turnOn() => print("Light on!");
+
   List<String> get actions => List.from(["off", "on"]);
 }
 
 class LightSwitch {
   Invoker _switch = Invoker();
   Light light;
+
   LightSwitch(this.light);
 
   void perform(String action) {
     if (!light.actions.contains(action)) {
       return print("Wait, wut?");
     }
-    switch(action) {
-      case "on": return _switch.execute(TurnOnCommand(light));
-      case "off": return _switch.execute(TurnOffCommand(light));
+    switch (action) {
+      case "on":
+        return _switch.execute(TurnOnCommand(light));
+      case "off":
+        return _switch.execute(TurnOffCommand(light));
     }
   }
 }
@@ -66,8 +75,4 @@ void main() {
   iotLightSwitch.perform("off");
   iotLightSwitch.perform("blink");
   iotLightSwitch.perform("on");
-
-
-
-
 }

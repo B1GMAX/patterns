@@ -27,7 +27,7 @@ class CoffeeMaker extends Observable {
   void brew() {
     print("Brewing the coffee...");
     notifyObservers("coffee's done");
-  }
+}
 }
 
 void main() {

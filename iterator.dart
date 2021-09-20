@@ -34,17 +34,14 @@ class NameIterator implements Iterator {
 
   @override
   Object next() {
-    if (this.hasNext()) {
       return names[index++];
-    }
-    return null;
   }
 }
 
 void main(List<String> args) {
   NameRepository namesRepository = NameRepository();
   for (Iterator iter = namesRepository.getIterator(); iter.hasNext();) {
-    String name = iter.next();
+    Object name = iter.next();
     print("Name :$name ");
   }
 }

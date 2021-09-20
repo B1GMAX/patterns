@@ -8,7 +8,7 @@ class UserNotifier extends INotifier{
   }
 }
 abstract class NotifierDecoratorBase extends INotifier{
-  INotifier notifier;
+  late INotifier notifier;
   NotifierDecoratorBase(INotifier notifier){
     this.notifier=notifier;
   }

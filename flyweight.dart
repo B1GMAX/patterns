@@ -1,11 +1,11 @@
 import 'dart:collection';
 
 abstract class EnglishCharacter {
-  String symbol;
+  String symbol='';
 
-  int width;
+  int width=0;
 
-  int height;
+  int height=0;
 
   void printCharacter();
 }
@@ -65,10 +65,10 @@ class CharacterC extends EnglishCharacter {
 }
 
 class FlyweightFactory {
-  HashMap<int, EnglishCharacter> characters = HashMap();
+  HashMap<int, EnglishCharacter?> characters = HashMap();
 
-  EnglishCharacter getCharacter(int characterCode) {
-    EnglishCharacter character = characters[characterCode];
+  EnglishCharacter? getCharacter(int characterCode) {
+    EnglishCharacter? character = characters[characterCode];
     if (character == null) {
       switch (characterCode) {
         case 1:
@@ -98,12 +98,12 @@ void main() {
 
   List<int> characterCodes = [1, 2, 3];
   for (int nextCode in characterCodes) {
-    EnglishCharacter character = factory.getCharacter(nextCode);
-    character.printCharacter();
+    EnglishCharacter? character = factory.getCharacter(nextCode);
+    character!.printCharacter();
   }
   List<int> characterCodes2 = [2, 1, 3];
   for (int nextCode in characterCodes2) {
-    EnglishCharacter character = factory.getCharacter(nextCode);
-    character.printCharacter();
+    EnglishCharacter?  character = factory.getCharacter(nextCode);
+    character!.printCharacter();
   }
 }

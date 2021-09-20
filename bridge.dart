@@ -29,7 +29,7 @@ class CoffeeRoaster extends Factory {
 }
 
 void main() {
-  var roaster = CoffeeRoaster();
+  CoffeeRoaster roaster = CoffeeRoaster();
   for (int i = 0; i < 3; i++) {
     roaster.turnValve();
     if (roaster.isTooHot) {

@@ -1,5 +1,5 @@
 class Memento {
-  String _state;
+  String _state='';
 
   Memento(String s) {
     _state = s;
@@ -13,7 +13,7 @@ class Memento {
 }
 
 class Originator {
-  String _state;
+  String _state='';
   Originator(String s) {
     state = s;
   }

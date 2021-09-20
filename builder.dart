@@ -20,8 +20,8 @@ class PizzaBuilder {
 
   PizzaBuilder(this.sauce);
 
-  List<String> toppings;
-  int diameter;
+  List<String> toppings=[];
+  int diameter=0;
 
   void setToppings(List<String> toppings) {
     this.toppings = toppings;

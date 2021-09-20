@@ -1,5 +1,5 @@
 abstract class Stateful {
-  String _state;
+  String _state='';
   String get state => _state;
   void set state(String newState) => _state = newState;
 }
@@ -12,7 +12,9 @@ class Mediator {
       party.state = state;
     }
   }
+
 }
+
 
 class Attendee extends Stateful {
   String name;

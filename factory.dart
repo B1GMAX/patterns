@@ -50,4 +50,5 @@ void main() {
   MazeGame ordinaryGame =  OrdinaryMazeGame();
   MazeGame magicGame = MagicMazeGame();
   print(ordinaryGame);
+  print(magicGame);
 }

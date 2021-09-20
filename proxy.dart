@@ -13,8 +13,8 @@ class ExpensiveClass implements Subject {
 }
 
 class Proxy implements Subject {
-  String _name;
-  ExpensiveClass _sub;
+  String _name='';
+   ExpensiveClass _sub=ExpensiveClass('');
 
   Proxy(this._name);
 
@@ -24,7 +24,7 @@ class Proxy implements Subject {
   }
 
   ExpensiveClass _subject() {
-    if (_sub != null) return _sub;
+    if (_sub != true) return _sub;
     print("Creating an instance of ExpensiveClass for the proxy...");
     _sub = ExpensiveClass(_name);
     return _sub;

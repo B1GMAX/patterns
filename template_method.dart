@@ -18,8 +18,8 @@ class ConcreteOverridingHook extends Abstract {
 }
 
 void main() {
-  var con1 = Concrete();
-  var con2 = ConcreteOverridingHook();
+  Concrete con1 = Concrete();
+  ConcreteOverridingHook con2 = ConcreteOverridingHook();
   con1.templateMethod();
   con2.templateMethod();
 }

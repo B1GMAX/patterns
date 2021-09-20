@@ -32,7 +32,7 @@ class CoffeeShop implements DrinkFactory {
 
 void main() {
   String mood = "done";
-  DrinkFactory destination;
+  late DrinkFactory destination;
 
   switch(mood) {
     case "sleepy": destination = CoffeeShop(); break;

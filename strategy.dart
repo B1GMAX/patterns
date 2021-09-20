@@ -10,7 +10,7 @@ class DripStrategy implements CoffeeStrategy {
   String announce(String roast) => "a drip coffee with $roast beans";
 }
 
-class MochaFrappuccinoStrategy implements CoffeeStrategy {
+class FrappuccinoStrategy implements CoffeeStrategy {
   String announce(String roast) => "a delicious mocha frappuccion with $roast beans";
 }
 
@@ -23,11 +23,11 @@ class CoffeeDrinker {
 void main() {
   AmericanoStrategy americano = AmericanoStrategy();
   DripStrategy drip = DripStrategy();
-  MochaFrappuccinoStrategy mocha = MochaFrappuccinoStrategy();
+  FrappuccinoStrategy  frappuccino = FrappuccinoStrategy();
 
   CoffeeDrinker me = CoffeeDrinker("Tyler", drip);
   CoffeeDrinker europeanBuddy = CoffeeDrinker("Pieter", americano);
-  CoffeeDrinker myDaughter = CoffeeDrinker("Joanie", mocha);
+  CoffeeDrinker myDaughter = CoffeeDrinker("Joanie", frappuccino);
 
   final String roastOfTheDay = "Italian";
 
